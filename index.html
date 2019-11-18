@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Github User Repos</title>
+    <link rel="shortcut icon" href="">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript">
+      function foo(response) {
+      var meta = response.meta;
+      var data = response.data;
+      console.log(meta);
+      console.log(data);
+      }
+
+      var script = document.createElement('script');
+      script.src = 'https://api.github.com?callback=foo';
+
+      document.getElementsByTagName('head')[0].appendChild(script);
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>User Repos</h1>
+
+        <form id="js-form">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="js-username" required></br>
+
+            </br><label for="user-type">Ownership Type:</label>
+            <select name="type" id="js-user-type">
+              <option value="owner">Owner</option>
+              <option value="member">Member</option>
+              <option value="all">All</option>
+            </select></br>
+
+            </br><label for="sort-by">Sort By:</label>
+            <select name="sort" id="js-sort-by">
+              <option value="full_name">Full Name</option>
+              <option value="created">Created</option>
+              <option value="updated">Updated</option>
+              <option value="pushed">Pushed</option>
+            </select></br>
+
+            </br><label for="max-results">Maximum results to return</label>
+            <input type="number" name="max-results" id="js-max-results" value="20">
+
+            <input type="submit" value="Go!">
+        </form>
+
+        <p id="js-error-message" class="error-message"></p>
+        <section id="results" class="hidden">
+          <h2>Repositories</h2>
+          <ul id="results-list">
+          </ul>
+        </section>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>
